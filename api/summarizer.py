@@ -11,7 +11,7 @@ class BookSummarizer:
     Handles AI-powered text summarization using transformer models.
     """
     
-    def __init__(self, model_name: str = "facebook/bart-large-cnn"):
+    def __init__(self, model_name: str = "t5-small"):
         """
         Initialize the summarizer with a specific model.
         
