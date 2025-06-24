@@ -4,7 +4,6 @@ import json
 import time
 from typing import Dict, Any, Optional
 import io
-import os
 
 # Page configuration
 st.set_page_config(
@@ -14,8 +13,8 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# API configuration - use environment variable for deployment
-API_BASE_URL = os.getenv("API_BASE_URL", "http://localhost:8000")
+# API configuration
+API_BASE_URL = "http://localhost:8000"
 
 def main():
     # Custom CSS for better styling
