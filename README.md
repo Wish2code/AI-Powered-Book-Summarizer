@@ -188,8 +188,7 @@ This project is open source and available under the MIT License.
 
 For issues, questions, or feature requests:
 1. Check the troubleshooting section
-2. Review API documentation at `/docs`
-3. Open an issue on GitHub
+2. Open an issue on GitHub
 
 ---
 
