@@ -1,5 +1,4 @@
 import re
-import nltk
 from typing import List, Dict, Any
 import logging
 
@@ -113,7 +112,8 @@ def get_text_statistics(text: str) -> Dict[str, Any]:
     Get basic statistics about the text.
     """
     words = text.split()
-    sentences = nltk.sent_tokenize(text)
+    # Lightweight sentence split to avoid NLTK downloads
+    sentences = [s.strip() for s in re.split(r'(?<=[\.\!\?])\s+', text) if s.strip()]
     
     return {
         'total_characters': len(text),
@@ -121,4 +121,4 @@ def get_text_statistics(text: str) -> Dict[str, Any]:
         'total_sentences': len(sentences),
         'average_words_per_sentence': len(words) / len(sentences) if sentences else 0,
         'estimated_reading_time_minutes': len(words) / 200  # Average reading speed
-    } 
+    }

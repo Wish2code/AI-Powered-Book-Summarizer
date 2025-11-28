@@ -1,32 +1,23 @@
 @echo off
-echo 📚 Book Summarizer AI - Windows Startup
-echo ======================================
+echo Book Summarizer - Windows Startup
+echo ================================
 
-echo.
-echo 🔧 Checking Python installation...
 python --version >nul 2>&1
 if errorlevel 1 (
-    echo ❌ Python is not installed or not in PATH
-    echo Please install Python from https://python.org
+    echo Python is not installed or not in PATH.
     pause
     exit /b 1
 )
 
-echo ✅ Python found
-
-echo.
-echo 📦 Installing dependencies...
+echo Installing dependencies (if needed)...
 pip install -r requirements.txt
 if errorlevel 1 (
-    echo ❌ Failed to install dependencies
+    echo Failed to install dependencies.
     pause
     exit /b 1
 )
 
-echo ✅ Dependencies installed
+echo Launching Streamlit...
+python -m streamlit run app.py --server.port 8501 --server.address 0.0.0.0
 
-echo.
-echo 🚀 Starting Book Summarizer AI...
-python start.py
-
-pause 
+pause

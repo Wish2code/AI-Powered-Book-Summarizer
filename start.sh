@@ -1,28 +1,18 @@
 #!/bin/bash
 
-echo "📚 Book Summarizer AI - Unix/Linux/Mac Startup"
-echo "=============================================="
+echo "Book Summarizer - Startup"
+echo "========================="
 
-echo ""
-echo "🔧 Checking Python installation..."
 if ! command -v python3 &> /dev/null; then
-    echo "❌ Python 3 is not installed or not in PATH"
-    echo "Please install Python 3 from https://python.org"
+    echo "Python 3 is not installed or not in PATH."
     exit 1
 fi
 
-echo "✅ Python 3 found"
-
-echo ""
-echo "📦 Installing dependencies..."
-pip3 install -r requirements.txt
-if [ $? -ne 0 ]; then
-    echo "❌ Failed to install dependencies"
+echo "Installing dependencies (if needed)..."
+pip3 install -r requirements.txt || {
+    echo "Failed to install dependencies."
     exit 1
-fi
+}
 
-echo "✅ Dependencies installed"
-
-echo ""
-echo "🚀 Starting Book Summarizer AI..."
-python3 start.py 
+echo "Launching Streamlit..."
+python3 -m streamlit run app.py --server.port 8501 --server.address 0.0.0.0
